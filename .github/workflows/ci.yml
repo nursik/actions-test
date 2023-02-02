@@ -32,6 +32,7 @@ jobs:
         echo "Someone failed"
 
     - name: Conclusion
+      if: ${{ always() }}
       run: |
         echo "${{ steps.fail-1.conclusion }}"
         echo "${{ steps.fail-1.outcome }}"
