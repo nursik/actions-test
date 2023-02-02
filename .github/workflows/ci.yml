@@ -13,12 +13,14 @@ jobs:
 
     steps:
     - name: Fail 1
+      id: fail-1
       if: ${{ always() }}
       run: | 
         echo "I failed"
         exit 1
 
     - name: Fail 2
+      id: fail-2
       if: ${{ always() }}
       run: | 
         echo "I failed"
@@ -28,6 +30,13 @@ jobs:
       if: ${{ failure() }}
       run: | 
         echo "Someone failed"
+
+    - name: Conclusion
+      run: |
+        echo "{{ steps.fail-1.conclusion }}"
+        echo "{{ steps.fail-1.outcome }}"
+        echo "{{ steps.fail-2.conclusion }}"
+        echo "{{ steps.fail-2.outcome }}"
 
   build-2:
 
@@ -35,12 +44,14 @@ jobs:
 
     steps:
     - name: Fail 1
+      id: fail-1
       continue-on-error: true
       run: | 
         echo "I failed"
         exit 1
 
     - name: Fail 2
+      id: fail-2
       continue-on-error: true
       run: | 
         echo "I failed"
@@ -50,3 +61,10 @@ jobs:
       if: ${{ failure() }}
       run: | 
         echo "Someone failed"
+    
+    - name: Conclusion
+      run: |
+        echo "{{ steps.fail-1.conclusion }}"
+        echo "{{ steps.fail-1.outcome }}"
+        echo "{{ steps.fail-2.conclusion }}"
+        echo "{{ steps.fail-2.outcome }}"
