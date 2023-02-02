@@ -14,7 +14,7 @@ jobs:
     steps:
     - name: Fail 1
       id: fail-1
-      if: ${{ always() }}
+      if: true
       run: | 
         echo "I failed"
         exit 1
