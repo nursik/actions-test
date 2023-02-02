@@ -33,10 +33,10 @@ jobs:
 
     - name: Conclusion
       run: |
-        echo "{{ steps.fail-1.conclusion }}"
-        echo "{{ steps.fail-1.outcome }}"
-        echo "{{ steps.fail-2.conclusion }}"
-        echo "{{ steps.fail-2.outcome }}"
+        echo "${{ steps.fail-1.conclusion }}"
+        echo "${{ steps.fail-1.outcome }}"
+        echo "${{ steps.fail-2.conclusion }}"
+        echo "${{ steps.fail-2.outcome }}"
 
   build-2:
 
@@ -64,7 +64,7 @@ jobs:
     
     - name: Conclusion
       run: |
-        echo "{{ steps.fail-1.conclusion }}"
-        echo "{{ steps.fail-1.outcome }}"
-        echo "{{ steps.fail-2.conclusion }}"
-        echo "{{ steps.fail-2.outcome }}"
+        echo "${{ steps.fail-1.conclusion }}"
+        echo "${{ steps.fail-1.outcome }}"
+        echo "${{ steps.fail-2.conclusion }}"
+        echo "${{ steps.fail-2.outcome }}"
