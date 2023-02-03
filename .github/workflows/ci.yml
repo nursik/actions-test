@@ -28,7 +28,7 @@ jobs:
         exit 1
 
     - name: Precondition 2
-      if: ${{ steps.fail-1.outcome == 'failure' }}
+      if: true
       run: echo "Precondition 2"
 
     - name: Fail 2
