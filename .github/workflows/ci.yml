@@ -12,12 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Success
+      id: success-1
+      run: echo "I AM GROOT"
+
+    - name: Precondition 1
+      if: ${{ always() && steps.success-1.outcome == 'success' }}
+      run: echo "Precondition 1"
+
     - name: Fail 1
       id: fail-1
       if: true
       run: | 
         echo "I failed"
         exit 1
+
+    - name: Precondition 2
+      if: ${{ always() && steps.fail-1.outcome == 'success' }}
+      run: echo "Precondition 2"
 
     - name: Fail 2
       id: fail-2
